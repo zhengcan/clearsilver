@@ -1,0 +1,13 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+script:
+- docker build -t canzheng/clearsilver .
+- docker run -v --rm test:/ canzheng/clearsilver python2 hello.py
+
+after_script:
+- docker images
