@@ -7,7 +7,7 @@ services:
 
 script:
 - docker build -t canzheng/clearsilver .
-- docker run -v test:/ --rm canzheng/clearsilver python2 hello.py
+- docker run -v test:/root/test --rm canzheng/clearsilver cd /root/test; python2 hello.py
 
 after_script:
 - docker images
