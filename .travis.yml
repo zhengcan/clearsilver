@@ -6,8 +6,9 @@ services:
   - docker
 
 script:
-- docker build -t canzheng/clearsilver .
-- docker run -v test:/root/test --rm canzheng/clearsilver "cd /root/test; python2 hello.py"
+- docker build -t zhengcan/clearsilver .
+- docker build -t zhengcan/clearsilver-test .
+- docker run --rm -w "/root/test" zhengcan/clearsilver-test "python2 hello.py"
 
 after_script:
 - docker images
