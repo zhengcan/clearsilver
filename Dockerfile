@@ -4,9 +4,8 @@ RUN echo "[options]" >> /etc/pacman.conf \
 RUN pacman-key --init \
   && pacman-key --refresh-keys || : \
   && pacman-key --populate archlinux || : \
-  && pacman -Syuv --noconfirm \
+  && pacman -Syyuv --noconfirm \
   && pacman-db-upgrade \
-  && pacman-key -u \
-  && pacman-key --refresh-keys || :
+  && pacman -Scc --noconfirm
 RUN pacman -S clearsilver --noconfirm
 # CMD ["/bin/bash"]
