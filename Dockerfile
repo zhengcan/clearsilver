@@ -5,6 +5,8 @@ RUN pacman-key --init \
   && pacman-key --refresh-keys || : \
   && pacman-key --populate archlinux || : \
   && pacman -Syuv --noconfirm \
-  && pacman-db-upgrade
+  && pacman-db-upgrade \
+  && pacman-key -u \
+  && pacman-key --refresh-keys || :
 RUN pacman -S clearsilver --noconfirm
 # CMD ["/bin/bash"]
