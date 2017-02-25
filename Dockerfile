@@ -1,11 +1,18 @@
 FROM base/archlinux:latest
+
+ENV MIRROR_SERVER https://mirrors.kernel.org/archlinux/\$repo/os/\$arch
+# ENV MIRROR_SERVER http://mirrors.163.com/archlinux/\$repo/os/\$arch
+
 RUN echo "[options]" >> /etc/pacman.conf \
-  && echo "SigLevel = Never" >> /etc/pacman.conf
+  && echo "SigLevel = Never" >> /etc/pacman.conf \
+  && echo "Server = $MIRROR_SERVER" > /etc/pacman.d/mirrorlist
+
 RUN pacman-key --init \
   && pacman-key --refresh-keys || : \
   && pacman-key --populate archlinux || : \
-  && pacman -Syu --noconfirm \
-  && pacman-db-upgrade \
-  && pacman -Syu --noconfirm
+  && pacman -Syyu --noconfirm \
+  && pacman-db-upgrade
+
 RUN pacman -S clearsilver --noconfirm
-# CMD ["/bin/bash"]
+
+WORKDIR /root
