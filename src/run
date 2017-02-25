@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ "$1" == "" ]; then
+  docker run -v `pwd`:/root/src -it --rm -w /root/src zhengcan/clearsilver
+else
+  docker run -v `pwd`:/root/src --rm -w /root/src zhengcan/clearsilver python2 $*
+fi
