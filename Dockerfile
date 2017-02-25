@@ -1,7 +1,8 @@
 FROM base/archlinux:latest
 
-ENV MIRROR_SERVER https://mirrors.kernel.org/archlinux/\$repo/os/\$arch
+ENV MIRROR_SERVER http://mirrors.kernel.org/archlinux/\$repo/os/\$arch
 # ENV MIRROR_SERVER http://mirrors.163.com/archlinux/\$repo/os/\$arch
+# ENV MIRROR_SERVER http://mirror.rackspace.com/archlinux/\$repo/os/\$arch
 
 RUN echo "[options]" >> /etc/pacman.conf \
   && echo "SigLevel = Never" >> /etc/pacman.conf \
