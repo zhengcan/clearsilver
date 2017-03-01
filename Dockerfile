@@ -17,3 +17,4 @@ RUN pacman-key --init \
 RUN pacman -S clearsilver --noconfirm
 
 WORKDIR /root
+CMD ["/bin/bash"]
